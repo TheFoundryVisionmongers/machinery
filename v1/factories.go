@@ -133,7 +133,7 @@ func BackendFactory(cnf *config.Config) (backendiface.Backend, error) {
 	}
 
 	if strings.HasPrefix(cnf.ResultBackend, "mongodb://") {
-		return mongobackend.New(cnf), nil
+		return mongobackend.New(cnf)
 	}
 
 	if strings.HasPrefix(cnf.ResultBackend, "eager") {
