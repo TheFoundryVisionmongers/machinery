@@ -10,6 +10,7 @@ import (
 	"github.com/RichardKnop/machinery/v1"
 	"github.com/RichardKnop/machinery/v1/config"
 	"github.com/stretchr/testify/assert"
+	"github.com/mongodb/mongo-go-driver/mongo"
 
 	amqpbroker "github.com/RichardKnop/machinery/v1/brokers/amqp"
 	redisbroker "github.com/RichardKnop/machinery/v1/brokers/redis"
@@ -349,6 +350,10 @@ func TestBackendFactory(t *testing.T) {
 
 	cnf = config.Config{
 		ResultBackend: "mongodb://localhost:27017/tasks",
+		MongoDb: config.MongoDBConfig{
+			Database: "tasks",
+			Client: &mongo.Client{}
+		}
 	}
 
 	actual, err = machinery.BackendFactory(&cnf)
