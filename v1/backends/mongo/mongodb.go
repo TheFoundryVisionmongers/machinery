@@ -321,7 +321,7 @@ func (b *Backend) createMongoIndexes(database string) error {
 	tasksCollection := b.client.Database(database).Collection("tasks")
 
 	_, err := tasksCollection.Indexes().CreateOne(context.Background(), mongo.IndexModel{
-		Keys:    bsonx.Doc{{"state", bsonx.Int32(-1)}},
+		Keys:    bsonx.Doc{{"state", bsonx.Int32(1)}},
 		Options: mongo.NewIndexOptionsBuilder().Background(true).ExpireAfterSeconds(int32(b.GetConfig().ResultsExpireIn)).Build(),
 	})
 	if err != nil {
@@ -329,7 +329,7 @@ func (b *Backend) createMongoIndexes(database string) error {
 	}
 
 	_, err = tasksCollection.Indexes().CreateOne(context.Background(), mongo.IndexModel{
-		Keys:    bsonx.Doc{{"lock", bsonx.Int32(-1)}},
+		Keys:    bsonx.Doc{{"lock", bsonx.Int32(1)}},
 		Options: mongo.NewIndexOptionsBuilder().Background(true).ExpireAfterSeconds(int32(b.GetConfig().ResultsExpireIn)).Build(),
 	})
 

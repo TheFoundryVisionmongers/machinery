@@ -347,12 +347,12 @@ func TestBackendFactory(t *testing.T) {
 	}
 
 	// 4) MongoDB backend test
-
+	// We fake the client as we never use it
 	cnf = config.Config{
 		ResultBackend: "mongodb://localhost:27017/tasks",
 		MongoDb: config.MongoDBConfig{
 			Database: "tasks",
-			Client: &mongo.Client{}
+			Client: &mongo.Client{},
 		}
 	}
 
