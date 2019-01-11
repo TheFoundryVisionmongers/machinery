@@ -58,7 +58,7 @@ func (b *Broker) StartConsuming(consumerTag string, concurrency int, taskProcess
 	sub := b.service.Subscription(b.subscriptionName)
 	MaxExtension
 	if b.MaxExtension != 0 {
-		sub.ReceiveSettings.MaxExtension = b.MaxExtension * time.Second
+		sub.ReceiveSettings.MaxExtension = time.Duration(b.MaxExtension) * time.Second
 	}
 
 	subscriptionExists, err := sub.Exists(context.Background())
