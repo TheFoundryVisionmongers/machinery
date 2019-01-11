@@ -56,7 +56,7 @@ func (b *Broker) StartConsuming(consumerTag string, concurrency int, taskProcess
 	deliveries := make(chan *pubsub.Message)
 
 	sub := b.service.Subscription(b.subscriptionName)
-	MaxExtension
+
 	if b.MaxExtension != 0 {
 		sub.ReceiveSettings.MaxExtension = time.Duration(b.MaxExtension) * time.Second
 	}
