@@ -129,7 +129,8 @@ type RedisConfig struct {
 
 // GCPPubSubConfig wraps GCP PubSub related configuration
 type GCPPubSubConfig struct {
-	Client *pubsub.Client
+	Client       *pubsub.Client
+	MaxExtension int
 }
 
 // MongoDBConfig ...
